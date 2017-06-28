@@ -1,6 +1,6 @@
 angular.module('todoApp', [])
-.controller('TodoController', function () {
-	var todoC = this;
+.controller('TodoController', function ($scope, $http) {
+	var todoC = $scope;
 	todoC.Texto="";
 	todoC.Sufijo="Senior";
 });
