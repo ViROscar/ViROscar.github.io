@@ -5,14 +5,9 @@ angular.module('todoApp', [])
 
 	$scope.Verso = "";
 	$http({
-			url: "https://getbible.net/json",
-			method: "GET",
-			params: {
-				scripture: "Psa1",
-				v:"valera"
-			}
-		}).success(function(data) {
-        
-        $scope.Verso = data;
-    });;
+		url: "https://getbible.net/json?scripture=Psa%20119:4-16;23:1-6&v=valera",
+		method: "GET"
+	}).then(function s(data) {
+		$scope.Verso = data;
+	});
 });
