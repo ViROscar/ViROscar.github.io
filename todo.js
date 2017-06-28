@@ -5,7 +5,7 @@ angular.module('todoApp', [])
 
 	$scope.Verso = "";
 	$http({
-			url: user.details_path,
+			url: "https://getbible.net/json",
 			method: "GET",
 			params: {
 				scripture: "Psa1",
