@@ -232,7 +232,7 @@ angular.module('todoApp', [])
 	];
 	$scope.capitulos = [];
 
-	$http.jsonp($sce.trustAsResourceUrl("http://getbible.net/json?p=John1&v=valera"), {
+	$http.jsonp($sce.trustAsResourceUrl("https://getbible.net/json?p=John1&v=valera"), {
 		jsonpCallbackParam: 'callback'
 	})
 	.then(function (data) {
