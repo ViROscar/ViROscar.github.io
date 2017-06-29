@@ -1,6 +1,7 @@
 <!doctype html>
 <html>
 	<head>
+		<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
 		<title>Prueba</title>
 		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
 		<script src="todo.js"></script>
@@ -8,11 +9,15 @@
 	<body>
 		<div ng-app="todoApp">
 			<div ng-controller="TodoController">
-				<label>Name:</label>
-				<input type="text" ng-model="Texto" placeholder="Enter a name here">
+				<select ng-options="item.label for item in libros track by item.id" ng-model="selected"></select>
+				<input type="text" ng-model="Texto">
+				<br/>
+				<button type="button" ng-click="buscar()">Ver</button>
 				<hr>
 				<label>{{Sufijo}} {{Texto}}</label>
-				<p>{{Verso.chapter[1].verse}}</p>
+				<p ng-repeat="x in Verso.chapter">
+					{{x.verse_nr}}: {{x.verse}}
+				</p>
 			</div>
 		</div>
 	</body>
