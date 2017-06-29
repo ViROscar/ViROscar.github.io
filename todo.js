@@ -6,7 +6,7 @@ angular.module('todoApp', [])
 	$scope.selected = "";
 	$scope.buscar = function () {
 		console.log($scope.selected.id);
-		$http.jsonp($sce.trustAsResourceUrl("http://getbible.net/json?p=" + $scope.selected.id + "" + $scope.Texto.id + "&v=valera"), {
+		$http.jsonp($sce.trustAsResourceUrl("https://getbible.net/json?p=" + $scope.selected.id + "" + $scope.Texto.id + "&v=valera"), {
 			jsonpCallbackParam: 'callback'
 		})
 		.then(function (data) {
@@ -15,7 +15,7 @@ angular.module('todoApp', [])
 	};
 	$scope.buscar2 = function () {
 		console.log($scope.selected.id);
-		$http.jsonp($sce.trustAsResourceUrl("http://getbible.net/json?p=" + $scope.selected.id + "&v=valera"), {
+		$http.jsonp($sce.trustAsResourceUrl("https://getbible.net/json?p=" + $scope.selected.id + "&v=valera"), {
 			jsonpCallbackParam: 'callback'
 		})
 		.then(function (data) {
