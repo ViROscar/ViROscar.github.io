@@ -9,12 +9,13 @@
 	<body>
 		<div ng-app="todoApp">
 			<div ng-controller="TodoController">
-				<select ng-options="item.label for item in libros track by item.id" ng-model="selected"></select>
-				<input type="text" ng-model="Texto">
+				<select ng-options="item.label for item in libros track by item.id" ng-model="selected" ng-change="buscar2()"></select>
+				<select ng-options="item.label for item in capitulos track by item.id" ng-model="Texto"></select>
+				<!-- capitulos -->
+				<!-- <input type="text" ng-model="Texto"> -->
 				<br/>
 				<button type="button" ng-click="buscar()">Ver</button>
 				<hr>
-				<label>{{Sufijo}} {{Texto}}</label>
 				<p ng-repeat="x in Verso.chapter">
 					{{x.verse_nr}}: {{x.verse}}
 				</p>

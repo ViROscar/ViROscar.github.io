@@ -1,22 +1,39 @@
 angular.module('todoApp', [])
 .controller('TodoController', function ($scope, $http, $sce) {
 	$scope.Texto = "";
-	$scope.Sufijo = "Senior";
+	$scope.libroCompleto = "";
 	$scope.Verso = "";
 	$scope.selected = "";
 	$scope.buscar = function () {
 		console.log($scope.selected.id);
-		$http.jsonp($sce.trustAsResourceUrl("http://getbible.net/json?p="+$scope.selected.id+""+$scope.Texto+"&v=valera"), {
+		$http.jsonp($sce.trustAsResourceUrl("http://getbible.net/json?p=" + $scope.selected.id + "" + $scope.Texto.id + "&v=valera"), {
 			jsonpCallbackParam: 'callback'
 		})
 		.then(function (data) {
 			$scope.Verso = data.data;
 		});
 	};
+	$scope.buscar2 = function () {
+		console.log($scope.selected.id);
+		$http.jsonp($sce.trustAsResourceUrl("http://getbible.net/json?p=" + $scope.selected.id + "&v=valera"), {
+			jsonpCallbackParam: 'callback'
+		})
+		.then(function (data) {
+			$scope.capitulos = [];
+			angular.forEach(data.data.book, function (value, key) {
+				var x = {
+					id: key,
+					label: key
+				};
+				$scope.capitulos.push(x);
+			});
+
+		});
+	};
 	$scope.libros = [{
 			id: 'Gen',
 			label: 'Génesis'
-		},{
+		}, {
 			id: 'Ex',
 			label: 'Éxodo'
 		}, {
@@ -213,6 +230,7 @@ angular.module('todoApp', [])
 			label: 'Apocalipsis'
 		}
 	];
+	$scope.capitulos = [];
 
 	$http.jsonp($sce.trustAsResourceUrl("http://getbible.net/json?p=John1&v=valera"), {
 		jsonpCallbackParam: 'callback'
