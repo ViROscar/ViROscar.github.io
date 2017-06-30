@@ -36,8 +36,6 @@ angular.module('todoApp', [])
 		.then(function (data) {
 			
 		});
-		
-		
 	};
 	$scope.libros = [{
 			id: 'Gen',
