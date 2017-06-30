@@ -9,6 +9,7 @@
 	<body>
 		<div ng-app="todoApp">
 			<div ng-controller="TodoController">
+				<a href="pagina1.html">Link</a>
 				<select ng-options="item.label for item in libros track by item.id" ng-model="selected" ng-change="buscar2()"></select>
 				<select ng-options="item.label for item in capitulos track by item.id" ng-model="Texto"></select>
 				<!-- capitulos -->
