@@ -4,6 +4,7 @@ angular.module('todoApp', [])
 	$scope.libroCompleto = "";
 	$scope.Verso = "";
 	$scope.selected = "";
+	$scope.textToSubmit = "";
 	$scope.buscar = function () {
 		console.log($scope.selected.id);
 		$http.jsonp($sce.trustAsResourceUrl("https://getbible.net/json?p=" + $scope.selected.id + "" + $scope.Texto.id + "&v=valera"), {
