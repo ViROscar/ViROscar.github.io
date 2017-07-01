@@ -87,6 +87,13 @@
 				padding-right: 15px;
 			}
 			
+			.SubmitDiv {
+				width:100%;
+				height:20%;
+				overflow-y: scroll;
+				padding:10px;
+			}
+			
 		</style>
 	</head>
 	<body>
@@ -118,7 +125,7 @@
 						<div class="TextToSubmitDiv">
 							<textarea class="textToSubmit" ng-model="textToSubmit"></textarea>
 						</div>
-						<div class="TextToSubmitDiv">
+						<div class="SubmitDiv">
 							<button type="button" class="buttonSubmit" ng-click="submitToSpreadSheet()">Enviar</button>
 						</div>
 					</div>
