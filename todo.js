@@ -36,7 +36,7 @@ angular.module('todoApp', [])
 		});
 	};
 	$scope.submitToSpreadSheet = function(){
-		$http.get($sce.trustAsResourceUrl("https://script.google.com/macros/s/AKfycbzfTyPdgrw_Llwoi7uFPnvmysoV0FYi-9DO5B1h9VCikDRL0Q1n/exec?libro="+$scope.libro.label+"&numero="+$scope.capitulo.id+"&texto="+$scope.textLearn))
+		$http.get($sce.trustAsResourceUrl("https://script.google.com/macros/s/AKfycbzfTyPdgrw_Llwoi7uFPnvmysoV0FYi-9DO5B1h9VCikDRL0Q1n/exec?libro="+$scope.libro.label+"&numero="+$scope.capitulo.id+"&texto="+$scope.textLearn+"&texto2="+$scope.textUse+"&text3="+$scope.textPetition))
 		.then(function (data) {
 			
 		});
