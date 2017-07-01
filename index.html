@@ -86,6 +86,7 @@
 				<div id="DesignContainer">
 					<div id="leftContainer">
 						<div id="#SearchBar">
+							<p class="etiquetas" style="display:inline-block">Buscar: </p>
 							<select ng-options="item.label for item in libros track by item.id" ng-model="selected" ng-change="buscar2()"></select>
 							<select ng-options="item.label for item in capitulos track by item.id" ng-model="Texto" ng-change="buscar()"></select>
 						</div>
