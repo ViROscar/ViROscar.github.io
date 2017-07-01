@@ -37,7 +37,7 @@
 				
 				<hr>
 				<div id="DesignContainer">
-					<div>
+					<div id="leftContainer">
 						<div>
 							<select ng-options="item.label for item in libros track by item.id" ng-model="selected" ng-change="buscar2()"></select>
 							<select ng-options="item.label for item in capitulos track by item.id" ng-model="Texto" ng-change="buscar()"></select>
@@ -50,16 +50,22 @@
 							</div>
 						</div>
 					</div>
-					<div>
-						<div></div>
-						<div></div>
-						<div></div>
-						<div></div>
+					<div id="rightContainer">
+						<div>
+							<div id="TextToSubmitDiv">
+								<textarea id="textToSubmit" ng-model="textToSubmit"></textarea>
+							</div>
+						</div>
+						<div>
+							
+						</div>
+						<div>
+							
+						</div>
+						<div>
+							
+						</div>
 					</div>
-				</div>
-				
-				<div id="TextToSubmitDiv">
-					<textarea id="textToSubmit" ng-model="textToSubmit"></textarea>
 				</div>
 				<button type="button" ng-click="submitToSpreadSheet()">Enviar</button>
 			</div>
