@@ -40,9 +40,6 @@
 	<body>
 		<div ng-app="todoApp">
 			<div ng-controller="TodoController">
-				<!-- <a href="pagina1.html">Link</a> -->
-				
-				<hr>
 				<div id="DesignContainer">
 					<div id="leftContainer">
 						<div>
@@ -64,17 +61,17 @@
 							</div>
 						</div>
 						<div>
-							
+							<textarea id="textToSubmit" ng-model="textToSubmit"></textarea>
 						</div>
 						<div>
-							
+							<textarea id="textToSubmit" ng-model="textToSubmit"></textarea>
 						</div>
 						<div>
-							
+							<button type="button" ng-click="submitToSpreadSheet()">Enviar</button>
 						</div>
 					</div>
 				</div>
-				<button type="button" ng-click="submitToSpreadSheet()">Enviar</button>
+				
 			</div>
 		</div>
 	</body>
