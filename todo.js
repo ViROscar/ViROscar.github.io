@@ -1,13 +1,17 @@
 angular.module('todoApp', [])
 .controller('TodoController', function ($scope, $http, $sce) {
-	$scope.Texto = "";
+	$scope.capitulo = "";
 	$scope.libroCompleto = "";
 	$scope.Verso = "";
-	$scope.selected = "";
-	$scope.textToSubmit = "";
+	$scope.libro = "";
+	
+	$scope.textLearn = "";
+	$scope.textUse = "";
+	$scope.textPetition = "";
+	
 	$scope.buscar = function () {
-		console.log($scope.selected.id);
-		$http.jsonp($sce.trustAsResourceUrl("https://getbible.net/json?p=" + $scope.selected.id + "" + $scope.Texto.id + "&v=valera"), {
+		console.log($scope.libro.id);
+		$http.jsonp($sce.trustAsResourceUrl("https://getbible.net/json?p=" + $scope.libro.id + "" + $scope.capitulo.id + "&v=valera"), {
 			jsonpCallbackParam: 'callback'
 		})
 		.then(function (data) {
@@ -15,8 +19,8 @@ angular.module('todoApp', [])
 		});
 	};
 	$scope.buscar2 = function () {
-		console.log($scope.selected.id);
-		$http.jsonp($sce.trustAsResourceUrl("https://getbible.net/json?p=" + $scope.selected.id + "&v=valera"), {
+		console.log($scope.libro.id);
+		$http.jsonp($sce.trustAsResourceUrl("https://getbible.net/json?p=" + $scope.libro.id + "&v=valera"), {
 			jsonpCallbackParam: 'callback'
 		})
 		.then(function (data) {
@@ -32,7 +36,7 @@ angular.module('todoApp', [])
 		});
 	};
 	$scope.submitToSpreadSheet = function(){
-		$http.get($sce.trustAsResourceUrl("https://script.google.com/macros/s/AKfycbzfTyPdgrw_Llwoi7uFPnvmysoV0FYi-9DO5B1h9VCikDRL0Q1n/exec?libro="+$scope.selected.label+"&numero="+$scope.Texto.id+"&texto="+$scope.textToSubmit))
+		$http.get($sce.trustAsResourceUrl("https://script.google.com/macros/s/AKfycbzfTyPdgrw_Llwoi7uFPnvmysoV0FYi-9DO5B1h9VCikDRL0Q1n/exec?libro="+$scope.libro.label+"&numero="+$scope.capitulo.id+"&texto="+$scope.textLearn))
 		.then(function (data) {
 			
 		});
