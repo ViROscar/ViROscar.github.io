@@ -78,6 +78,15 @@
 				margin-right: 0px;
 			}
 			
+			.buttonSubmit {
+				border-radius: 25px;
+				border: 0px;
+				padding-top: 10px;
+				padding-bottom: 10px;
+				padding-left: 15px;
+				padding-right: 15px;
+			}
+			
 		</style>
 	</head>
 	<body>
@@ -110,7 +119,7 @@
 							<textarea class="textToSubmit" ng-model="textToSubmit"></textarea>
 						</div>
 						<div class="TextToSubmitDiv">
-							<button type="button" ng-click="submitToSpreadSheet()">Enviar</button>
+							<button type="button" class="buttonSubmit" ng-click="submitToSpreadSheet()">Enviar</button>
 						</div>
 					</div>
 				</div>
