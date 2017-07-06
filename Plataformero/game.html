@@ -11,6 +11,8 @@
 				this.key2;
 				this.key3;
 				
+				this.jumpTimer = 0;
+				
 				this.preload = function() {
 					this.game.stage.backgroundColor = '#eee';
 					this.game.load.spritesheet('player', 'SpriteBoy.png',14,32);
@@ -51,8 +53,9 @@
 						this.player.animations.play('right');
 						this.player.body.velocity.x = 150;
 					}
-					else if (this.key3.isDown){
-						this.player.body.velocity.y = -150;
+					if (this.key3.isDown && this.player.body.onFloor() && game.time.now > this.jumpTimer){
+						this.player.body.velocity.y = -250;
+						this.jumpTimer = game.time.now + 750;
 					}
 					else {
 						this.player.animations.play('default');
