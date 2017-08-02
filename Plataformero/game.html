@@ -1,6 +1,6 @@
 <html>
 	<head>
-		<title>Game</title>
+		<title>Game x</title>
 		<script src="phaser.min.js"></script>
 		<script>
 			var P2Game = {};
@@ -27,6 +27,9 @@
 					this.game.load.image('BackGroundA', 'BackGroundA.png');
 					this.game.load.image('Arbolin', 'Arbolin.png');
 					
+					this.game.load.tilemap('tilemap', 'Stage1.json', null, Phaser.Tilemap.TILED_JSON);
+					this.game.load.image('tiles', 'tilestomap2.png');
+					
 					//Arbolin.png
 					
 				}
@@ -43,8 +46,21 @@
 					this.key3 = this.game.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR);
 					
 					this.bc=this.game.add.tileSprite(0,0,480,320,'BackGroundA');
+					this.bc.fixedToCamera = true;
 					
-					this.arbolin=this.game.add.sprite(100, 236, 'Arbolin');
+					//---------------
+					
+					this.map = this.game.add.tilemap('tilemap');
+					this.map.addTilesetImage('Pepe', 'tiles');
+					
+					this.groundLayer = this.map.createLayer('GroundLayer');
+					this.styleLayerA = this.map.createLayer('StyleLayerA');
+					this.styleLayerB = this.map.createLayer('StyleLayerB');
+					
+					this.map.setCollisionBetween(1, 100, true, 'GroundLayer');
+					
+					//--------------
+					//this.arbolin=this.game.add.sprite(100, 236, 'Arbolin');
 					
 					this.player = game.add.sprite(32, 32, 'player');
 					this.game.physics.enable(this.player, Phaser.Physics.ARCADE);
@@ -56,19 +72,23 @@
 					this.player.animations.add('left', [4, 5], 10, true);
 					this.player.animations.add('right', [1, 2], 10, true);
 					
-					this.tilesprite=this.game.add.tileSprite(0, 300, 480, 20, 'grassfloor');
-					this.game.physics.enable(this.tilesprite, Phaser.Physics.ARCADE);
+					this.game.camera.follow(this.player);
 					
-					this.tilesprite.body.collideWorldBounds = true;
-					this.tilesprite.body.immovable = true;
-					this.tilesprite.body.allowGravity = false;
 					
-					//this.player.scale.setTo(this.player.scale.x*1.5,this.player.scale.y*1.5);
+					this.groundLayer.resizeWorld();
+					
+					//this.tilesprite=this.game.add.tileSprite(0, 300, 480, 20, 'grassfloor');
+					//this.game.physics.enable(this.tilesprite, Phaser.Physics.ARCADE);
+					
+					//this.tilesprite.body.collideWorldBounds = true;
+					//this.tilesprite.body.immovable = true;
+					//this.tilesprite.body.allowGravity = false;
 					
 				}
 				
 				this.update=function() {
-					game.physics.arcade.collide(this.player, this.tilesprite, this.customOnFloorFunction,null,this);
+					this.game.physics.arcade.collide(this.player, this.groundLayer);
+					//game.physics.arcade.collide(this.player, this.tilesprite, this.customOnFloorFunction,null,this);
 					this.player.body.velocity.x = 0;
 					if (this.key1.isDown){
 						this.player.animations.play('left');
@@ -81,9 +101,13 @@
 					else {
 						this.player.animations.play('default');
 					}
-					if (this.key3.isDown && this.customOnFloor && game.time.now > this.jumpTimer){ //  this.player.body.onFloor()
+					/*if (this.key3.isDown && this.customOnFloor && game.time.now > this.jumpTimer){ //  this.player.body.onFloor()
 						this.player.body.velocity.y = -250;
 						this.jumpTimer = game.time.now + 750;
+					}*/
+					if (this.key3.isDown && this.player.body.onFloor() ){ //  this.player.body.onFloor()
+						this.player.body.velocity.y = -270;
+						//this.jumpTimer = game.time.now + 750;
 					}
 				}
 				
