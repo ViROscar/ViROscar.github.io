@@ -15,6 +15,8 @@
 			P2Game.StateA = function (game) {
 				this.player;
 				
+				this.Enemygroup;
+				
 				this.spider;
 				this.spider2;
 				this.spider3;
@@ -70,15 +72,11 @@
 					this.player = new PlayerObject(game, 14, 200);
 					this.game.add.existing(this.player);
 					
-					this.spider= new SpiderObject(game, 100, 400);
-					this.spider2= new SpiderObject(game, 200, 400);
-					this.spider3= new SpiderObject(game, 300, 400);
-					this.spider4= new SpiderObject(game, 250, 400);
-					this.game.add.existing(this.spider);
-					this.game.add.existing(this.spider2);
-					this.game.add.existing(this.spider3);
-					this.game.add.existing(this.spider4);
-					
+					this.Enemygroup=this.game.add.group();
+					this.Enemygroup.add(new SpiderObject(game, 100, 400, this.groundLayer));
+					this.Enemygroup.add(new SpiderObject(game, 200, 400, this.groundLayer));
+					this.Enemygroup.add(new SpiderObject(game, 300, 400, this.groundLayer));
+					this.Enemygroup.add(new SpiderObject(game, 250, 400, this.groundLayer));
 					
 					this.game.camera.follow(this.player);
 					
@@ -88,10 +86,7 @@
 				
 				this.update=function() {
 					this.game.physics.arcade.collide(this.player, this.groundLayer);
-					this.game.physics.arcade.collide(this.spider, this.groundLayer);
-					this.game.physics.arcade.collide(this.spider2, this.groundLayer);
-					this.game.physics.arcade.collide(this.spider3, this.groundLayer);
-					this.game.physics.arcade.collide(this.spider4, this.groundLayer);
+					
 				}
 				
 				//this.customOnFloorFunction = function(obj1,obj2){

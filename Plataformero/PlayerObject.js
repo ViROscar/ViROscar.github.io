@@ -16,7 +16,7 @@ var PlayerObject = function (game,x,y){
 	this.key2 = this.game.input.keyboard.addKey(Phaser.Keyboard.RIGHT);
 	this.key3 = this.game.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR);
 	
-	this.LeftOrRight=0;
+	this.LeftOrRight=false;
 	
 	this.update = function() {
 		this.playerMove();
@@ -25,21 +25,21 @@ var PlayerObject = function (game,x,y){
 	this.playerMove = function(){
 		this.body.velocity.x = 0;
 		if (this.key1.isDown){
-			this.LeftOrRight=1;
+			this.LeftOrRight=true;
 			this.animations.play('left');
 			this.body.velocity.x = -150;
 		}
 		else if (this.key2.isDown){
-			this.LeftOrRight=0;
+			this.LeftOrRight=false;
 			this.animations.play('right');
 			this.body.velocity.x = 150;
 		}
 		else {
-			if(this.LeftOrRight==0){
-				this.animations.play('default');
+			if(this.LeftOrRight){
+				this.animations.play('default2');
 			}
 			else{
-				this.animations.play('default2');
+				this.animations.play('default');
 			}
 			
 		}
