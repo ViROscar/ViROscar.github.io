@@ -1,7 +1,8 @@
-var SpiderObject = function (game,x,y,groundref){
-	Phaser.Sprite.call(this, game, x, y, 'spider');
+var RedThiefAObject = function (game,x,y,groundref,mapref){
+	Phaser.Sprite.call(this, game, x, y, 'redthiefa');
 	
 	this.groundTilesRef=groundref;
+	this.tileMapRef=mapref
 	
 	this.game.physics.enable(this, Phaser.Physics.ARCADE);
 	
@@ -11,7 +12,6 @@ var SpiderObject = function (game,x,y,groundref){
 	this.body.gravity.y = 1000;
 	this.body.maxVelocity.y = 500;
 	
-	this.jumpTimer=Math.floor(Math.random() * (3000 - 0 + 1)) + 0;
 	
 	this.body.collideWorldBounds = true;
 	
@@ -20,15 +20,13 @@ var SpiderObject = function (game,x,y,groundref){
 	this.body.onWorldBounds= new Phaser.Signal();
 	this.body.onWorldBounds.add(function() {this.hitWorldBounds(1)}, this);
 	
-	
-	
 	this.update = function() {
 		this.game.physics.arcade.collide(this, this.groundTilesRef,this.hitWorldBounds, null, this);
 		this.move();
-		this.smalljump();
 	};
 	
 	this.move = function(){
+		
 		this.body.velocity.x = 0;
 		if(this.LeftOrRight){
 			this.animations.play('default2');
@@ -38,17 +36,26 @@ var SpiderObject = function (game,x,y,groundref){
 			this.animations.play('default');
 			this.body.velocity.x = 50;
 		}
+		this.cliffDetect();
 	};
 	
-	this.smalljump = function(){
-		if(this.jumpTimer > 0){
-			this.jumpTimer=this.jumpTimer - game.time.elapsed ;
+	
+	this.cliffDetect = function(){
+		var xx;
+		var tilefind;
+		if(this.LeftOrRight){
+			xx=this.body.x - 4;
 		}
 		else{
-			this.body.velocity.y = -100;
-			this.jumpTimer=3000;
+			xx=this.body.x + this.body.width + 4;
 		}
-	};
+		tilefind=this.tileMapRef.getTileWorldXY(xx,(this.body.y + this.body.height),16,16,'GroundLayer' );
+		if(this.body.onFloor() && !tilefind){
+			this.LeftOrRight=!(this.LeftOrRight);
+			
+			this.hitWorldBounds();
+		}
+	}
 	
 	this.hitWorldBounds = function(sprite){
 		if(this.body.blocked.left){
@@ -60,5 +67,5 @@ var SpiderObject = function (game,x,y,groundref){
 	};
 }
 
-SpiderObject.prototype = Object.create(Phaser.Sprite.prototype);
-SpiderObject.prototype.constructor = SpiderObject;
+RedThiefAObject.prototype = Object.create(Phaser.Sprite.prototype);
+RedThiefAObject.prototype.constructor = RedThiefAObject;

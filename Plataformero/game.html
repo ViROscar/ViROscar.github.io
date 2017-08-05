@@ -9,6 +9,10 @@
 		
 		<script src="PlayerObject.js"></script>
 		<script src="SpiderObject.js"></script>
+		<script src="BirdObject.js"></script>
+		<script src="SCObject.js"></script>
+		<script src="RedThiefAObject.js"></script>
+		
 		<script>
 			var P2Game = {};
 			
@@ -36,7 +40,10 @@
 				this.preload = function() {
 					this.game.stage.backgroundColor = '#eee';
 					
+					this.game.load.spritesheet('redthiefa', 'SpriteThef1.png',12,31);
+					this.game.load.spritesheet('scarecrown', 'SpriteSC.png',16,29);
 					this.game.load.spritesheet('spider', 'SpriteSpider.png',13,12);
+					this.game.load.spritesheet('bird', 'SpriteBird.png',13,13);
 					this.game.load.spritesheet('player', 'SpriteBoy.png',14,32);
 					
 					this.game.load.image('grassfloor', 'floorgrass.png');
@@ -77,7 +84,13 @@
 					this.Enemygroup.add(new SpiderObject(game, 200, 400, this.groundLayer));
 					this.Enemygroup.add(new SpiderObject(game, 300, 400, this.groundLayer));
 					this.Enemygroup.add(new SpiderObject(game, 250, 400, this.groundLayer));
-					
+					this.Enemygroup.add(new BirdObject(game, 450, 300, this.groundLayer));
+					this.Enemygroup.add(new BirdObject(game, 550, 300, this.groundLayer));
+					this.Enemygroup.add(new BirdObject(game, 650, 300, this.groundLayer));
+					this.Enemygroup.add(new SCObject(game, 750, 300, this.groundLayer));
+					this.Enemygroup.add(new SCObject(game, 850, 300, this.groundLayer));
+					this.Enemygroup.add(new RedThiefAObject(game, 950, 300, this.groundLayer,this.map));
+					this.Enemygroup.add(new RedThiefAObject(game, 1050, 200, this.groundLayer,this.map));
 					this.game.camera.follow(this.player);
 					
 					
