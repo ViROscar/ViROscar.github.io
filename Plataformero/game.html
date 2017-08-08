@@ -13,6 +13,8 @@
 		<script src="SCObject.js"></script>
 		<script src="RedThiefAObject.js"></script>
 		
+		<script src="ArrowBulletObject.js"></script>
+		
 		<script>
 			var P2Game = {};
 			
@@ -40,6 +42,7 @@
 				this.preload = function() {
 					this.game.stage.backgroundColor = '#eee';
 					
+					this.game.load.spritesheet('arrowbullet', 'SpriteArrowBullet.png?',12,5);
 					this.game.load.spritesheet('redthiefa', 'SpriteThef1.png',12,31);
 					this.game.load.spritesheet('scarecrown', 'SpriteSC.png',16,29);
 					this.game.load.spritesheet('spider', 'SpriteSpider.png',13,12);
@@ -54,6 +57,9 @@
 				}
 				
 				this.create = function() {
+					this.game.renderer.clearBeforeRender = false;
+					this.game.renderer.roundPixels = true;
+				
 					this.game.physics.startSystem(Phaser.Physics.ARCADE);
 					
 					this.game.input.keyboard.removeKeyCapture(Phaser.Keyboard.LEFT);
@@ -89,8 +95,8 @@
 					this.Enemygroup.add(new BirdObject(game, 650, 300, this.groundLayer));
 					this.Enemygroup.add(new SCObject(game, 750, 300, this.groundLayer));
 					this.Enemygroup.add(new SCObject(game, 850, 300, this.groundLayer));
-					this.Enemygroup.add(new RedThiefAObject(game, 950, 300, this.groundLayer,this.map));
-					this.Enemygroup.add(new RedThiefAObject(game, 1050, 200, this.groundLayer,this.map));
+					this.Enemygroup.add(new RedThiefAObject(game, 950, 300, this.groundLayer,this.map,this.Enemygroup));
+					this.Enemygroup.add(new RedThiefAObject(game, 1050, 200, this.groundLayer,this.map,this.Enemygroup));
 					this.game.camera.follow(this.player);
 					
 					

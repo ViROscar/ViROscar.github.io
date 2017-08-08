@@ -1,8 +1,10 @@
-var RedThiefAObject = function (game,x,y,groundref,mapref){
+var RedThiefAObject = function (game,x,y,groundref,mapref,enegroupref){
 	Phaser.Sprite.call(this, game, x, y, 'redthiefa');
 	
 	this.groundTilesRef=groundref;
-	this.tileMapRef=mapref
+	this.tileMapRef=mapref;
+	this.enemyGroupRef=enegroupref;
+	
 	
 	this.game.physics.enable(this, Phaser.Physics.ARCADE);
 	
@@ -16,6 +18,7 @@ var RedThiefAObject = function (game,x,y,groundref,mapref){
 	this.body.collideWorldBounds = true;
 	
 	this.LeftOrRight=true;
+	this.shootTimer=3000;
 	
 	this.body.onWorldBounds= new Phaser.Signal();
 	this.body.onWorldBounds.add(function() {this.hitWorldBounds(1)}, this);
@@ -23,6 +26,8 @@ var RedThiefAObject = function (game,x,y,groundref,mapref){
 	this.update = function() {
 		this.game.physics.arcade.collide(this, this.groundTilesRef,this.hitWorldBounds, null, this);
 		this.move();
+		
+		this.shoot();
 	};
 	
 	this.move = function(){
@@ -39,6 +44,15 @@ var RedThiefAObject = function (game,x,y,groundref,mapref){
 		this.cliffDetect();
 	};
 	
+	this.shoot = function(){
+		if(this.shootTimer <= 0){
+			this.enemyGroupRef.add(new ArrowBulletObject(game, this.body.x, this.body.y, this.groundTilesRef,this.LeftOrRight));
+			this.shootTimer =3000;
+		}
+		else{
+			this.shootTimer=this.shootTimer-game.time.elapsed;
+		}
+	}
 	
 	this.cliffDetect = function(){
 		var xx;
