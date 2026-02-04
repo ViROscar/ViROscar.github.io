@@ -1,0 +1,1 @@
+import{ga as o,ma as n,ua as m}from"./chunk-FMKIQY2X.js";var s=class t{static \u0275fac=function(e){return new(e||t)};static \u0275cmp=n({type:t,selectors:[["app-home"]],decls:1,vars:0,consts:[["src",o`Games/PlatformerTest/Platformer%20Game.html`,"width","800","height","600"]],template:function(e,r){e&1&&m(0,"iframe",0)},encapsulation:2})};export{s as HomeComponent};
