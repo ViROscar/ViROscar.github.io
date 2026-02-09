@@ -1,5 +1,15 @@
 
     [
         {"id" :0, "name" : "test", "author":"lorem", "date" : "01/01/2026", "url" : "Games/PlatformerTest/Platformer Game.html"},
-        {"id" :1, "name" : "test2", "author":"lorem2", "date" : "01/01/2026", "url" : "https://viroscar1.gitlab.io/mypage/Games/PlatformerTest/Platformer Game.html"}
+        {"id" :1, "name" : "test2", "author":"lorem2", "date" : "01/01/2026", "url" : "https://viroscar1.gitlab.io/mypage/Games/PlatformerTest/Platformer Game.html"},
+
+        {"id" :2, "name" : "67", "author":"67", "date" : "01/01/2026", "url" : "https://viroscar1.gitlab.io/mypage/Games/67/67.html"},
+        {"id" :3, "name" : "Cart Kids", "author":"Cart Kids", "date" : "01/01/2026", "url" : "https://viroscar1.gitlab.io/mypage/Games/Cart Kids/KartsKids.html"},
+        {"id" :4, "name" : "hola tengo hambre", "author":"hola tengo hambre", "date" : "01/01/2026", "url" : "https://viroscar1.gitlab.io/mypage/Games/hola tengo hambre/holatengohambre.html"},
+        {"id" :5, "name" : "MundoGodot51", "author":"MundoGodot51", "date" : "01/01/2026", "url" : "https://viroscar1.gitlab.io/mypage/Games/MundoGodot51/MundoGodot51.html"},
+        {"id" :6, "name" : "MundoGodot52", "author":"MundoGodot52", "date" : "01/01/2026", "url" : "https://viroscar1.gitlab.io/mypage/Games/MundoGodot52/MundoGodot52.html"},
+        {"id" :7, "name" : "MundoGodot53", "author":"MundoGodot53", "date" : "01/01/2026", "url" : "https://viroscar1.gitlab.io/mypage/Games/MundoGodot53/MundoGodot53.html"},
+        {"id" :8, "name" : "MundoGodot54", "author":"MundoGodot54", "date" : "01/01/2026", "url" : "https://viroscar1.gitlab.io/mypage/Games/MundoGodot54/MundoGodot54.html"},
+        {"id" :9, "name" : "PlatformerIker", "author":"PlatformerIker", "date" : "01/01/2026", "url" : "https://viroscar1.gitlab.io/mypage/Games/PlatformerIker/PlatformerIker.html"},
+        {"id" :10, "name" : "skibidi", "author":"skibidi", "date" : "01/01/2026", "url" : "https://viroscar1.gitlab.io/mypage/Games/skibidi/skibidi.html"}
     ]
