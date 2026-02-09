@@ -1,0 +1,5 @@
+
+    [
+        {"id" :0, "name" : "test", "author":"lorem", "date" : "01/01/2026", "url" : "Games/PlatformerTest/Platformer Game.html"},
+        {"id" :1, "name" : "test2", "author":"lorem2", "date" : "01/01/2026", "url" : "https://viroscar1.gitlab.io/mypage/Games/PlatformerTest/Platformer Game.html"}
+    ]
